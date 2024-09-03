@@ -28,6 +28,5 @@ namespace PricingService.Tests
             var instance = Sizer.SizeUpParcel(parcelSize);
             Assert.IsInstanceOf<LargeSizeCalculator>(instance);
         }
-
     }
 }

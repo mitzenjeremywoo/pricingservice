@@ -4,7 +4,6 @@ namespace PricingService.Tests
 {
     public class PriceCalculatorTests
     {
-
         [Test]
         public void BasicPricingServiceTest()
         {
