@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PricingService.Tests", "PricingService.Tests\PricingService.Tests.csproj", "{3AC29A65-31A3-4146-A172-EFBF07402030}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PricingService", "PricingService\PricingService.csproj", "{82DB39D1-2505-4C22-9C77-1D1FD5C4A818}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AC29A65-31A3-4146-A172-EFBF07402030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC29A65-31A3-4146-A172-EFBF07402030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC29A65-31A3-4146-A172-EFBF07402030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC29A65-31A3-4146-A172-EFBF07402030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82DB39D1-2505-4C22-9C77-1D1FD5C4A818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82DB39D1-2505-4C22-9C77-1D1FD5C4A818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82DB39D1-2505-4C22-9C77-1D1FD5C4A818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82DB39D1-2505-4C22-9C77-1D1FD5C4A818}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE1349DF-D223-46E4-BDE1-459C88DF2924}
+	EndGlobalSection
+EndGlobal

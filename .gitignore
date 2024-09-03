@@ -1,0 +1,5 @@
+src/.vs/
+src/PricingService.Tests/bin/
+src/PricingService.Tests/obj/
+src/PricingService/obj/
+src/PricingService/bin/
