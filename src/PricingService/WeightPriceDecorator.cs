@@ -12,7 +12,7 @@
 
         public override decimal CalculatePrice()
         {
-            var additionalCost = _weight * 0.3m; // Example calculation
+            var additionalCost = _weight * 0.3m;
             return base.CalculatePrice() + additionalCost;
         }
 

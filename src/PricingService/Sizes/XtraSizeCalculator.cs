@@ -1,14 +1,8 @@
 ﻿namespace PricingService.Sizes
 {
-    public class XtraSizeCalculator : PriceDecorator
+    public class XtraSizeCalculator(IPriceCalculator priceCalculator, decimal charges = PriceConstant.XtraLargeSizePrice) : PriceDecorator(priceCalculator)
     {
-        private readonly decimal _charges;
-
-        public XtraSizeCalculator(IPriceCalculator priceCalculator, decimal charges = 25.0m)
-            : base(priceCalculator)
-        {
-            _charges = charges;
-        }
+        private readonly decimal _charges = charges;     
 
         public override decimal CalculatePrice()
         {
@@ -17,7 +11,7 @@
 
         public override string GetDescription()
         {
-            return $"{base.GetDescription()} + Size Adjustment: {_charges * 0.5m:C}";
+            return $"{base.GetDescription()} + Xtra Large Parcel: {_charges:C}";
         }
     }
 }

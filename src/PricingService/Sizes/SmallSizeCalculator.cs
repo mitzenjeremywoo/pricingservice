@@ -1,14 +1,14 @@
 ﻿namespace PricingService.Sizes
 {
-    public class SmallSizeCalculator : PriceDecorator
+    public class SmallSizeCalculator(IPriceCalculator priceCalculator, decimal charges = PriceConstant.SmallSizePrice) : PriceDecorator(priceCalculator)
     {
-        private readonly decimal _charges;
+        private readonly decimal _charges = charges;
 
-        public SmallSizeCalculator(IPriceCalculator priceCalculator, decimal charges = 3.0m)
-            : base(priceCalculator)
-        {
-            _charges = charges;
-        }
+        //public SmallSizeCalculator(IPriceCalculator priceCalculator, decimal charges = PriceConstant.SmallSizePrice)
+        //    : base(priceCalculator)
+        //{
+        //    _charges = charges;
+        //}
 
         public override decimal CalculatePrice()
         {
@@ -17,7 +17,7 @@
 
         public override string GetDescription()
         {
-            return $"{base.GetDescription()} + Size Adjustment: {_charges * 0.5m:C}";
+            return $"{base.GetDescription()} + Small Parcel: {_charges * 0.5m:C}";
         }
     }
 }

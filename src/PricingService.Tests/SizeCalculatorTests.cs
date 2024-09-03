@@ -6,7 +6,7 @@ namespace PricingService.Tests
     public class SizeCalculatorTests
     {
         [Test]
-        public void SmallSizeCalculatorTest()
+        public void WhenSmallSizeCalculatorThenPriceIs3Test()
         {
             decimal basePrice = 0.0m;
             decimal expectedSmallPrice = 3.0m;
@@ -18,7 +18,7 @@ namespace PricingService.Tests
         }
 
         [Test]
-        public void MediumSizeCalculatorTest()
+        public void WhenMediumSizeCalculatorThenPriceIs8Test()
         {
             decimal basePrice = 0.0m;
             decimal expectedSmallPrice = 8.0m;
@@ -30,7 +30,7 @@ namespace PricingService.Tests
         }
 
         [Test]
-        public void LargeSizeCalculatorTest()
+        public void WhenLargeSizeCalculatorPriceIs15Test()
         {
             decimal basePrice = 0.0m;
             decimal expectedSmallPrice = 15.0m;
@@ -42,7 +42,7 @@ namespace PricingService.Tests
         }
 
         [Test]
-        public void XtraLargeSizeCalculatorTest()
+        public void WhenXtraLargeSizeCalculatorThenPriceIs25Test()
         {
             decimal basePrice = 0.0m;
             decimal expectedSmallPrice = 25.0m;

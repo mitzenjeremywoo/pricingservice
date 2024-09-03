@@ -5,7 +5,7 @@ namespace PricingService
     {
         private readonly decimal _basePrice;
 
-        public BasePrice(decimal basePrice)
+        public BasePrice(decimal basePrice = 0.0m)
         {
             _basePrice = basePrice;
         }
