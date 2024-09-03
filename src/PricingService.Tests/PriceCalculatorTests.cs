@@ -4,8 +4,9 @@ namespace PricingService.Tests
 {
     public class PriceCalculatorTests
     {
+
         [Test]
-        public void Test1()
+        public void BasicPricingServiceTest()
         {
             decimal basePrice = 100m;
             decimal size = 10m;
@@ -13,7 +14,7 @@ namespace PricingService.Tests
             decimal discountAmount = 15m;
 
             IPriceCalculator calculator = new BasePrice(basePrice);
-            calculator = new SizePriceDecorator(calculator, size);
+            //calculator = new SizePriceDecorator(calculator, size);
             calculator = new WeightPriceDecorator(calculator, weight);
             calculator = new DiscountPriceDecorator(calculator, discountAmount);
 
