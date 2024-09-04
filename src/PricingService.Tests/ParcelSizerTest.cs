@@ -8,7 +8,7 @@ namespace PricingService.Tests
         [Test]
         public void WhenParcelSizeWithinSmallRangeThenReturnAppropriateCalculator()
         {
-            var parcelSize = new ParcelSize(2, 9);
+            var parcelSize = new Parcel(2, 9, 1);
             var instance = Sizer.SizeUpParcel(parcelSize);
             Assert.IsInstanceOf<SmallSizeCalculator>(instance);
         }
@@ -16,7 +16,7 @@ namespace PricingService.Tests
         [Test]
         public void WhenParcelSizeWithinMediumRangeThenReturnAppropriateCalculator()
         {
-            var parcelSize = new ParcelSize(2, 10);
+            var parcelSize = new Parcel(2, 10, 1);
             var instance = Sizer.SizeUpParcel(parcelSize);
             Assert.IsInstanceOf<MediumSizeCalculator>(instance);
         }
@@ -24,7 +24,7 @@ namespace PricingService.Tests
         [Test]
         public void WhenParcelSizeWithinLargeRangeThenReturnAppropriateCalculator()
         {
-            var parcelSize = new ParcelSize(2, 52   );
+            var parcelSize = new Parcel(2, 52, 1);
             var instance = Sizer.SizeUpParcel(parcelSize);
             Assert.IsInstanceOf<LargeSizeCalculator>(instance);
         }

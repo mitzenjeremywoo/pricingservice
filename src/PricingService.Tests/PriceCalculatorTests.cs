@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PricingService.Sizes;
 
 namespace PricingService.Tests
 {
@@ -7,15 +8,15 @@ namespace PricingService.Tests
         [Test]
         public void BasicPricingServiceTest()
         {
-            decimal basePrice = 100m;
-            decimal size = 10m;
             decimal weight = 5m;
             decimal discountAmount = 15m;
 
-            IPriceCalculator calculator = new BasePrice(basePrice);
-            //calculator = new SizePriceDecorator(calculator, size);
-            calculator = new WeightPriceDecorator(calculator, weight);
+            var parcelSize = new Parcel(2, 9, weight);
+
+            var calculator = Sizer.SizeUpParcel(parcelSize);
+            calculator = new WeightPriceDecorator(calculator, parcelSize);
             calculator = new DiscountPriceDecorator(calculator, discountAmount);
+            calculator = new FastDeliveryPriceDecorator(calculator);
 
             decimal finalPrice = calculator.CalculatePrice();
             string description = calculator.GetDescription();

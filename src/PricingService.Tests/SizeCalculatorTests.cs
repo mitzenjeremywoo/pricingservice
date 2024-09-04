@@ -10,9 +10,9 @@ namespace PricingService.Tests
         {
             decimal basePrice = 0.0m;
             decimal expectedSmallPrice = 3.0m;
-            IPriceCalculator calculator = new BasePrice(basePrice);
-            calculator = new SmallSizeCalculator(calculator);
-            var result = calculator.CalculatePrice();
+            IPriceCalculator baseCalculator = new BasePrice(basePrice);
+            baseCalculator = new SmallSizeCalculator(baseCalculator);
+            var result = baseCalculator.CalculatePrice();
 
             Assert.That(result, Is.EqualTo(expectedSmallPrice));
         }
@@ -21,36 +21,36 @@ namespace PricingService.Tests
         public void WhenMediumSizeCalculatorThenPriceIs8Test()
         {
             decimal basePrice = 0.0m;
-            decimal expectedSmallPrice = 8.0m;
-            IPriceCalculator calculator = new BasePrice(basePrice);
-            calculator = new MediumSizeCalculator(calculator);
-            var result = calculator.CalculatePrice();
+            decimal expectedMediumPrice = 8.0m;
+            IPriceCalculator baseCalculator = new BasePrice(basePrice);
+            baseCalculator = new MediumSizeCalculator(baseCalculator);
+            var result = baseCalculator.CalculatePrice();
 
-            Assert.That(result, Is.EqualTo(expectedSmallPrice));
+            Assert.That(result, Is.EqualTo(expectedMediumPrice));
         }
 
         [Test]
         public void WhenLargeSizeCalculatorPriceIs15Test()
         {
             decimal basePrice = 0.0m;
-            decimal expectedSmallPrice = 15.0m;
+            decimal expectedLargePrice = 15.0m;
             IPriceCalculator calculator = new BasePrice(basePrice);
             calculator = new LargeSizeCalculator(calculator);
             var result = calculator.CalculatePrice();
 
-            Assert.That(result, Is.EqualTo(expectedSmallPrice));
+            Assert.That(result, Is.EqualTo(expectedLargePrice));
         }
 
         [Test]
         public void WhenXtraLargeSizeCalculatorThenPriceIs25Test()
         {
             decimal basePrice = 0.0m;
-            decimal expectedSmallPrice = 25.0m;
+            decimal expectedXtraLargePrice = 25.0m;
             IPriceCalculator calculator = new BasePrice(basePrice);
             calculator = new XtraSizeCalculator(calculator);
             var result = calculator.CalculatePrice();
 
-            Assert.That(result, Is.EqualTo(expectedSmallPrice));
+            Assert.That(result, Is.EqualTo(expectedXtraLargePrice));
         }
     }
 }
