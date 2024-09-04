@@ -2,13 +2,7 @@
 {
     public class MediumSizeCalculator(IPriceCalculator priceCalculator, decimal charges = PriceConstant.MediumSizePrice) : PriceDecorator(priceCalculator)
     {
-        private readonly decimal _charges = charges;
-
-        //public MediumSizeCalculator(IPriceCalculator priceCalculator, decimal charges = PriceConstant.MediumSizePrice)
-        //    : base(priceCalculator)
-        //{
-        //    _charges = charges;
-        //}
+        private readonly decimal _charges = charges;  
 
         public override decimal CalculatePrice()
         {

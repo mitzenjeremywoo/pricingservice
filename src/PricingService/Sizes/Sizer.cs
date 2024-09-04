@@ -13,10 +13,10 @@
 
         public static decimal GetWeightLimitByParcelSize(Parcel parcel) => parcel switch
         {
+            var s when s.SpecialProduct == SpecialProduct.SpecialOnWeight => 50,
             var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.SmallSizeLimit => 1,
             var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.MediumSizeLimit => 3,
             var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.LargeSizeLimit => 6,
-            var s when s.MaxSizeInCentimeter == PriceConstant.SpecialSizeLimit => 50,
             var s when s.MaxSizeInCentimeter > PriceConstant.LargeSizeLimit => 10,
             _ => throw new ArgumentOutOfRangeException(nameof(parcel), "Unsupported parcel dimension size")
         };

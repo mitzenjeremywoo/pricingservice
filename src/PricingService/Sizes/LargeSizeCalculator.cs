@@ -2,13 +2,7 @@
 {
     public class LargeSizeCalculator(IPriceCalculator priceCalculator, decimal charges = PriceConstant.LargeSizePrice) : PriceDecorator(priceCalculator)
     {
-        private readonly decimal _charges = charges;
-
-        //public LargeSizeCalculator(IPriceCalculator priceCalculator, decimal charge = PriceConstant.LargeSizePrice)
-        //    : base(priceCalculator)
-        //{
-        //    _charges = charge;
-        //}
+        private readonly decimal _charges = charges;    
 
         public override decimal CalculatePrice()
         {

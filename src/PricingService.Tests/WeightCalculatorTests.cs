@@ -44,7 +44,7 @@ namespace PricingService.Tests
         [Test]
         public void WhenSpecialWeightParceWithinWeightLimitThenPriceChargeApplied()
         {
-            var parcelSize = new Parcel(PriceConstant.SpecialSizeLimit, PriceConstant.SpecialSizeLimit, 50);
+            var parcelSize = new Parcel(0, 0, 50, SpecialProduct.SpecialOnWeight);
             var calculator = new WeightPriceDecorator(new BasePrice(), parcelSize);
             var result = calculator.CalculatePrice();
             Assert.That(result, Is.EqualTo(0.0m));
@@ -53,7 +53,7 @@ namespace PricingService.Tests
         [Test]
         public void WhenSpecialWeightParceÈxceedWeightLimitThenPriceChargeApplied()
         {
-            var parcelSize = new Parcel(PriceConstant.SpecialSizeLimit, PriceConstant.SpecialSizeLimit, 51);
+            var parcelSize = new Parcel(0, 0, 51, SpecialProduct.SpecialOnWeight);
             var calculator = new WeightPriceDecorator(new BasePrice(), parcelSize);
             var result = calculator.CalculatePrice();
             Assert.That(result, Is.EqualTo(1.0m));
@@ -62,7 +62,7 @@ namespace PricingService.Tests
         [Test]
         public void WhenSpecialWeightParceÈxceedWeightLimitTwiceThenPriceChargeApplied()
         {
-            var parcelSize = new Parcel(PriceConstant.SpecialSizeLimit, PriceConstant.SpecialSizeLimit, 52);
+            var parcelSize = new Parcel(0, 0, 52, SpecialProduct.SpecialOnWeight);
             var calculator = new WeightPriceDecorator(new BasePrice(), parcelSize);
             var result = calculator.CalculatePrice();
             Assert.That(result, Is.EqualTo(2.0m));
