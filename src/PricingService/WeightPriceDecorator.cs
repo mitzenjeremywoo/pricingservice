@@ -22,10 +22,7 @@ namespace PricingService
             {
                 decimal excessWeight = parcel.WeightInKgs - weightLimit;
 
-                if (parcel.MaxSizeInCentimeter == PriceConstant.SpecialSizeLimit)
-                    overweightCharge = excessWeight * PriceConstant.SpecialExcessWeightChargePerKg;
-                else
-                    overweightCharge = excessWeight * PriceConstant.ExcessWeightChargePerKg; // $2 per kg over the weight limit for standard size 
+                overweightCharge = parcel.MaxSizeInCentimeter == PriceConstant.SpecialSizeLimit ? excessWeight * PriceConstant.SpecialExcessWeightChargePerKg : excessWeight * PriceConstant.ExcessWeightChargePerKg;               
             }
             return overweightCharge;
         }
