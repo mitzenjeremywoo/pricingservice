@@ -16,8 +16,9 @@
             var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.SmallSizeLimit => 1,
             var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.MediumSizeLimit => 3,
             var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.LargeSizeLimit => 6,
+            var s when s.MaxSizeInCentimeter == PriceConstant.SpecialSizeLimit => 50,
             var s when s.MaxSizeInCentimeter > PriceConstant.LargeSizeLimit => 10,
-            _ => throw new ArgumentOutOfRangeException(nameof(parcel), "Size is out of range")
+            _ => throw new ArgumentOutOfRangeException(nameof(parcel), "Unsupported parcel dimension size")
         };
     }
 }

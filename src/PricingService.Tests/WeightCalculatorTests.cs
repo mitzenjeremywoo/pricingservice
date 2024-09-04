@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PricingService.Sizes;
 
 namespace PricingService.Tests
 {
@@ -38,6 +39,33 @@ namespace PricingService.Tests
             var calculator = new WeightPriceDecorator(new BasePrice(), parcelSize);
             var result = calculator.CalculatePrice();
             Assert.That(result, Is.EqualTo(0.0m));
+        }
+
+        [Test]
+        public void WhenSpecialWeightParceWithinWeightLimitThenPriceChargeApplied()
+        {
+            var parcelSize = new Parcel(PriceConstant.SpecialSizeLimit, PriceConstant.SpecialSizeLimit, 50);
+            var calculator = new WeightPriceDecorator(new BasePrice(), parcelSize);
+            var result = calculator.CalculatePrice();
+            Assert.That(result, Is.EqualTo(0.0m));
+        }
+
+        [Test]
+        public void WhenSpecialWeightParceÈxceedWeightLimitThenPriceChargeApplied()
+        {
+            var parcelSize = new Parcel(PriceConstant.SpecialSizeLimit, PriceConstant.SpecialSizeLimit, 51);
+            var calculator = new WeightPriceDecorator(new BasePrice(), parcelSize);
+            var result = calculator.CalculatePrice();
+            Assert.That(result, Is.EqualTo(1.0m));
+        }
+
+        [Test]
+        public void WhenSpecialWeightParceÈxceedWeightLimitTwiceThenPriceChargeApplied()
+        {
+            var parcelSize = new Parcel(PriceConstant.SpecialSizeLimit, PriceConstant.SpecialSizeLimit, 52);
+            var calculator = new WeightPriceDecorator(new BasePrice(), parcelSize);
+            var result = calculator.CalculatePrice();
+            Assert.That(result, Is.EqualTo(2.0m));
         }
 
     }
