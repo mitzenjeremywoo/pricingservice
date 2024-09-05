@@ -81,5 +81,23 @@ namespace PricingService.Tests
             var totals = new PriceCalculator(parcels, fastDelivery).CalculatePrice();
             Assert.IsTrue(totals.Equals(expectedCharge));
         }
+
+        //[TestCase(26, false, 2, 2, 2, 2)]
+        //[TestCase(26, false, 2, 2, 2, 3)]
+        //[TestCase(30, false, 2, 2, 2, 4)]
+        //[TestCase(34, false, 2, 2, 2, 5)] 
+        [TestCase(27, false, 3, 2, 2, 4)] // 15 + 20 elligible for a mania discount + overweight calculation
+        public void MixedParcelOverweightThenChargeCalcIsSameWithExpected(decimal expectedCharge, bool fastDelivery, int sParcelCount, int sWeight, int mParcelCount, int mWeight)
+        {
+            var smallParcels = CreateParcelsTest(sParcelCount, 9, sWeight); // 10
+            var mediumparcels = CreateParcelsTest(mParcelCount, 30, mWeight); // 16
+
+            var parcels = new List<Parcel>();
+            parcels.AddRange(smallParcels);
+            parcels.AddRange(mediumparcels);
+
+            var totals = new PriceCalculator(parcels, fastDelivery).CalculatePrice();
+            Assert.IsTrue(totals.Equals(expectedCharge));
+        }
     }
 }
