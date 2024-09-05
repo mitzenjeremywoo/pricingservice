@@ -1,6 +1,6 @@
 ﻿using PricingService.Sizes;
 
-namespace PricingService
+namespace PricingService.Weight
 {
     public class WeightPriceDecorator : PriceDecorator
     {
@@ -22,7 +22,7 @@ namespace PricingService
             {
                 decimal excessWeight = parcel.WeightInKgs - weightLimit;
 
-                overweightCharge = parcel.SpecialProduct == SpecialProduct.SpecialOnWeight ? excessWeight * PriceConstant.SpecialExcessWeightChargePerKg : excessWeight * PriceConstant.ExcessWeightChargePerKg;               
+                overweightCharge = parcel.SpecialProduct == SpecialProduct.SpecialOnWeight ? excessWeight * PriceConstant.SpecialExcessWeightChargePerKg : excessWeight * PriceConstant.ExcessWeightChargePerKg;
             }
             return overweightCharge;
         }

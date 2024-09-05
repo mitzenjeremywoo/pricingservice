@@ -5,4 +5,12 @@
         SpecialOnWeight,
         Normal
     }
+    public enum ParcelSize
+    {
+        Small,
+        Medium,
+        Large,
+        XtraLarge,
+        Special
+    }
 }

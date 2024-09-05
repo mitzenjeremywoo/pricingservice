@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using PricingService.Sizes;
+using PricingService.Weight;
 
 namespace PricingService.Tests
 {
@@ -67,7 +67,6 @@ namespace PricingService.Tests
             var result = calculator.CalculatePrice();
             Assert.That(result, Is.EqualTo(2.0m));
         }
-
     }
 }
 

@@ -1,4 +1,4 @@
-﻿namespace PricingService
+﻿namespace PricingService.Discounts
 {
     public class DiscountPriceDecorator : PriceDecorator
     {

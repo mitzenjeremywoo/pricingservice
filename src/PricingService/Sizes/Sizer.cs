@@ -1,7 +1,25 @@
 ﻿namespace PricingService.Sizes
 {    
     public class Sizer
-    {     
+    {
+        public static ParcelSize GetParcelSize(Parcel parcel) => parcel switch
+        {
+            var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.SmallSizeLimit => ParcelSize.Small,
+            var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.MediumSizeLimit => ParcelSize.Medium,
+            var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.LargeSizeLimit => ParcelSize.Large,
+            var s when s.MaxSizeInCentimeter > PriceConstant.LargeSizeLimit => ParcelSize.XtraLarge,
+            _ => throw new ArgumentOutOfRangeException(nameof(parcel), "Size is out of range")
+        };
+
+        public static decimal GetParcelCostBySize(ParcelSize size) => size switch
+        {
+            var s when s == ParcelSize.Small => PriceConstant.SmallSizePrice,
+            var s when s == ParcelSize.Medium => PriceConstant.MediumSizePrice,
+            var s when s == ParcelSize.Large => PriceConstant.LargeSizePrice,
+            var s when s == ParcelSize.XtraLarge => PriceConstant.XtraLargeSizePrice,
+            _ => throw new ArgumentOutOfRangeException(nameof(size), "Price is out of range")
+        };
+
         public static PriceDecorator SizeUpParcel(Parcel parcel) => parcel switch
         {
             var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.SmallSizeLimit => new SmallSizeCalculator(new BasePrice()),

@@ -1,6 +1,5 @@
 ﻿namespace PricingService
 {
-
     public class Parcel(decimal minSizeInCentimeter, decimal maxSizeInCentimeter, decimal weightInKgs, SpecialProduct specialProduct = SpecialProduct.Normal)
     {
         public decimal MinSizeInCentimeter = minSizeInCentimeter;
