@@ -33,7 +33,7 @@ namespace PricingService.Tests
         public void TwoSmallParcelWithoutOverweightThenChargeCalcIsSameWithExpected(decimal expectedCharge, bool fastDelivery, int parcelCount)
         {
             var parcels = CreateParcelsTest(parcelCount, 9);
-            var totals = new PriceCalculator(parcels, fastDelivery).CalculatePrice();           
+            var totals = new PriceCalculator(parcels, fastDelivery).CalculatePrice();
             Assert.IsTrue(totals.Equals(expectedCharge));
         }
 
@@ -66,6 +66,18 @@ namespace PricingService.Tests
         public void TwoXtraLargeParcelWithoutOverweightThenChargeCalcIsSameWithExpected(decimal expectedCharge, bool fastDelivery, int parcelCount)
         {
             var parcels = CreateParcelsTest(parcelCount, 125);
+            var totals = new PriceCalculator(parcels, fastDelivery).CalculatePrice();
+            Assert.IsTrue(totals.Equals(expectedCharge));
+        }
+
+        [TestCase(10, false, 2, 2)]
+        [TestCase(20, true, 2, 2)]
+        [TestCase(17, false, 4, 2)]
+        [TestCase(34, true, 4, 2)]
+        [TestCase(18, false, 2, 4)]
+        public void TwoSmallParcelOverweightThenChargeCalcIsSameWithExpected(decimal expectedCharge, bool fastDelivery, int parcelCount, int weight)
+        {
+            var parcels = CreateParcelsTest(parcelCount, 9, weight);
             var totals = new PriceCalculator(parcels, fastDelivery).CalculatePrice();
             Assert.IsTrue(totals.Equals(expectedCharge));
         }
