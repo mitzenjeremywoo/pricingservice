@@ -14,7 +14,7 @@ namespace PricingService.Tests
             decimal discountAmount = 15m;
             var parcelSize = new Parcel(2, 9, weight);
 
-            var calculator = Sizer.SizeUpParcel(parcelSize);
+            var calculator = Sizer.SizeUpParcel(Sizer.GetParcelSize(parcelSize));
             calculator = new WeightPriceDecorator(calculator, parcelSize);
             calculator = new DiscountPriceDecorator(calculator, discountAmount);
             calculator = new FastDeliveryPriceDecorator(calculator);

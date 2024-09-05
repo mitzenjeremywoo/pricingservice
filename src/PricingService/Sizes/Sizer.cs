@@ -20,14 +20,14 @@
             _ => throw new ArgumentOutOfRangeException(nameof(size), "Price is out of range")
         };
 
-        public static PriceDecorator SizeUpParcel(Parcel parcel) => parcel switch
+        public static PriceDecorator SizeUpParcel(ParcelSize size) => size switch
         {
-            var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.SmallSizeLimit => new SmallSizeCalculator(new BasePrice()),
-            var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.MediumSizeLimit => new MediumSizeCalculator(new BasePrice()),
-            var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.LargeSizeLimit => new LargeSizeCalculator(new BasePrice()),
-            var s when s.MaxSizeInCentimeter > PriceConstant.LargeSizeLimit => new XtraSizeCalculator(new BasePrice()),
-            _ => throw new ArgumentOutOfRangeException(nameof(parcel), "Size is out of range")
-        };
+            var s when s == ParcelSize.Small => new SmallSizeCalculator(new BasePrice()),
+            var s when s == ParcelSize.Medium => new MediumSizeCalculator(new BasePrice()),
+            var s when s == ParcelSize.Large => new LargeSizeCalculator(new BasePrice()),
+            var s when s == ParcelSize.XtraLarge => new XtraSizeCalculator(new BasePrice()),
+            _ => throw new ArgumentOutOfRangeException(nameof(size), "Size is out of range")
+        };     
 
         public static decimal GetWeightLimitByParcelSize(Parcel parcel) => parcel switch
         {

@@ -18,7 +18,7 @@ namespace PricingService
 
                 foreach (var parcel in _parcels)
                 {
-                    calculator = Sizer.SizeUpParcel(parcel);
+                    calculator = Sizer.SizeUpParcel(Sizer.GetParcelSize(parcel));
                     calculator = new WeightPriceDecorator(calculator, parcel);
                     subTotal += calculator.CalculatePrice();
                 }
