@@ -27,7 +27,7 @@
             var s when s == ParcelSize.Large => new LargeSizeCalculator(new BasePrice()),
             var s when s == ParcelSize.XtraLarge => new XtraSizeCalculator(new BasePrice()),
             _ => throw new ArgumentOutOfRangeException(nameof(size), "Size is out of range")
-        };     
+        };
 
         public static decimal GetWeightLimitByParcelSize(Parcel parcel) => parcel switch
         {
@@ -37,6 +37,6 @@
             var s when s.MaxSizeInCentimeter > 0 && s.MaxSizeInCentimeter < PriceConstant.LargeSizeLimit => 6,
             var s when s.MaxSizeInCentimeter > PriceConstant.LargeSizeLimit => 10,
             _ => throw new ArgumentOutOfRangeException(nameof(parcel), "Unsupported parcel dimension size")
-        };
+        };    
     }
 }

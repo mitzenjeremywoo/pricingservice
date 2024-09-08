@@ -23,12 +23,16 @@ namespace PricingService
                     subTotal += calculator.CalculatePrice();
                 }
 
+                var desc = calculator.GetDescription();
+
                 IPriceCalculator gcalculator = new BasePrice(subTotal);
                 var discountAmount = new ManiaCalculator().CalculateTotalCost(_parcels.ToList());
                 gcalculator = new DiscountPriceDecorator(gcalculator, discountAmount);
 
                 if (_fastDelivery)
                     gcalculator = new FastDeliveryPriceDecorator(gcalculator);
+
+                var desc1 = gcalculator.GetDescription();
                 return gcalculator.CalculatePrice();
             }
             return 0;
